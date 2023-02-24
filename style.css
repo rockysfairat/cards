@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  background-color: aquamarine;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Character btns: */
+
+.charactersBtnsWrapper {
+  border: #000 solid 2px;
+  border-radius: 5px;
+  width: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 50px;
+  background-color: aquamarine;
+}
+
+.charactersBtnsWrapper::before {
+  content: "Pick up the character";
+  width: 50%;
+  height: 35px;
+  position: absolute;
+  top: -35px;
+  left: 0;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  font-family: "Rowdies", cursive;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.charactersBtnsWrapper button {
+  background-color: #fff;
+  border: #000 2px solid;
+  border-radius: 5px;
+  padding: 3px 7px 3px 7px;
+  font-size: 20px;
+  font-family: "Rowdies", cursive;
+}
+
+/* Character's card: */
+
+article {
+  display: none;
+  width: 70%;
+  border-radius: 5px;
+  padding-top: 5px;
+  transform: rotate3d(3, 1, 1, 360deg);
+  background-color: aquamarine;
+  position: relative;
+}
+
+article::before {
+  content: "";
+  width: calc(100% + 5px);
+  height: calc(100% + 5px);
+  background-color: #000;
+  border-radius: 5px;
+  position: absolute;
+  top: -2px;
+  bottom: 0;
+  left: -2px;
+  right: 0;
+  z-index: -3;
+}
+
+article::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: aquamarine;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 5px;
+}
+
+/* Image and Stats wrappers: */
+
+.imgAndStats {
+  width: 40%;
+  margin: 0px 2px 5px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.imgWrapper {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  margin-left: 10px;
+  position: relative;
+}
+
+.imgWrapper span {
+  position: absolute;
+  width: calc(100% + 3px);
+  height: calc(100% + 3px);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-repeat: no-repeat;
+  background-image: repeating-conic-gradient(#000 0deg, #000 360deg);
+}
+
+.imgWrapper img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.statsWrapper {
+  outline: dotted green 2px;
+  width: 70%;
+}
+
+/* Text wrapper: */
+
+.txtWrapper {
+  margin: 0px 0px 5px 12px;
+  outline: dashed 2px indigo;
+  z-index: 10;
+}
+
+.txtWrapper > h1,
+.desc > p {
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-family: "Rowdies", cursive;
+  font-size: 32px;
+}
+
+.desc p {
+  font-size: 18px;
+}
