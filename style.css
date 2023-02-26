@@ -69,11 +69,10 @@ article {
   position: relative;
 }
 
-article::before {
+article > span {
   content: "";
   width: calc(100% + 5px);
   height: calc(100% + 5px);
-  background-color: #000;
   border-radius: 5px;
   position: absolute;
   top: -2px;
@@ -99,7 +98,7 @@ article::after {
 /* Image and Stats wrappers: */
 
 .imgAndStats {
-  width: 40%;
+  width: 30%;
   margin: 0px 2px 5px 0px;
   display: flex;
   flex-direction: column;
@@ -147,6 +146,7 @@ article::after {
   margin: 0px 0px 5px 12px;
   outline: dashed 2px indigo;
   z-index: 10;
+  width: 70%;
 }
 
 .txtWrapper > h1,
