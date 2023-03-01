@@ -24,17 +24,20 @@ main {
 .charactersBtnsWrapper {
   border: #000 solid 2px;
   border-radius: 5px;
-  width: 50%;
+  width: fit-content;
+  height: 80%;
   padding: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   position: absolute;
   top: 50px;
+  left: 10px;
   background-color: aquamarine;
 }
 
 .charactersBtnsWrapper::before {
-  content: "Pick up the character";
+  content: "Pick";
   width: 50%;
   height: 35px;
   position: absolute;
@@ -161,4 +164,51 @@ h1 {
 
 .desc p {
   font-size: 18px;
+  animation: 2000ms 1 forwards paragraphAppear;
+  position: relative;
+}
+
+.desc span {
+  border-left: #000 3px solid;
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: aquamarine;
+  animation: 2000ms 1 forwards revealSpan;
+}
+
+/* KEEP IT AS A REF: */
+/* .desc p:nth-child(1) {
+  background-color: blue;
+  font-size: 22px;
+}
+
+.desc p:nth-child(2) {
+  background-color: red;
+} */
+
+@keyframes paragraphAppear {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+@keyframes revealSpan {
+  0% {
+    width: 100%;
+    opacity: 100%;
+  }
+  90% {
+    width: 3px;
+    opacity: 100%;
+  }
+  100% {
+    width: 0%;
+    opacity: 0;
+  }
 }
