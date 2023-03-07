@@ -134,10 +134,10 @@ function animateCharImg() {
   function updateClocky() {
     translucentVal = (translucentVal + 1) % 360;
     blackVal = (blackVal - 1) % 360;
-    clocky[0].style = `background-image: repeating-conic-gradient(rgba(0, 0, 0, 0) 0deg, rgba(0, 0, 0, 0) ${translucentVal}deg, #000 1deg, #000 ${blackVal}deg);`;
+    clocky[0].style = `background-image: repeating-conic-gradient(rgba(0, 0, 0, 0) 0deg, rgba(0, 0, 0, 0) ${translucentVal}deg, #00ff00 1deg, #00ff00 ${blackVal}deg);`;
   }
 
-  const intervalIdClocky = setInterval(updateClocky, 5);
+  const intervalIdClocky = setInterval(updateClocky, 2);
 
   setTimeout(() => {
     clearInterval(intervalIdClocky);
@@ -150,7 +150,7 @@ function animateCardDeco() {
   let darkVal = 0;
   function updateCardDeco() {
     darkVal = darkVal + 1;
-    cardDecorationOutline.style = `background-image:  linear-gradient(-150deg, rgba(0,0,0,1) ${darkVal}%, rgba(0,0,0,0) ${darkVal}% 100%);`;
+    cardDecorationOutline.style = `background-image:  linear-gradient(-150deg, rgba(0, 255, 0,1) ${darkVal}%, rgba(0, 255, 0,0) ${darkVal}% 100%);`;
   }
 
   const intervalIdcardDeco = setInterval(updateCardDeco, 10);

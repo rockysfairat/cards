@@ -11,7 +11,7 @@ body {
 }
 
 main {
-  background-color: aquamarine;
+  background-color: #333333;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,53 +22,103 @@ main {
 /* Character btns: */
 
 .charactersBtnsWrapper {
-  border: #000 solid 2px;
+  border: #00ff00 solid 2px;
   border-radius: 5px;
-  width: fit-content;
-  height: 80%;
   padding: 10px;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   position: absolute;
-  top: 50px;
-  left: 10px;
-  background-color: aquamarine;
-}
-
-.charactersBtnsWrapper::before {
-  content: "Pick";
-  width: 50%;
-  height: 35px;
-  position: absolute;
-  top: -35px;
-  left: 0;
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-  font-family: "Rowdies", cursive;
-  font-size: 20px;
-  border-radius: 5px;
+  background-color: #333333;
+  width: 70%;
+  height: fit-content;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%, 0px);
 }
 
 .charactersBtnsWrapper button {
-  background-color: #fff;
-  border: #000 2px solid;
-  border-radius: 5px;
-  padding: 3px 7px 3px 7px;
-  font-size: 20px;
+  border: #00ff00 2px solid;
+  border-radius: 50%;
+  font-size: 18px;
   font-family: "Rowdies", cursive;
+  width: 85px;
+  height: 85px;
+  color: #333333;
+}
+
+#Jack,
+#Stephen,
+#Nikolas {
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+#Jack {
+  background-image: url("jack.jpeg");
+}
+
+#Jack::before,
+#Stephen::before,
+#Nikolas::before {
+  background-color: rgba(255, 255, 255, 0.65);
+  background-blend-mode: color-burn;
+  width: 120%;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#Jack::before {
+  content: "Jack";
+}
+
+#Stephen::before {
+  content: "Stephen";
+}
+
+#Nikolas::before {
+  content: "Nikolas";
+}
+
+#Stephen {
+  background-image: url("Stephen.jpeg");
+}
+
+#Nikolas {
+  background-image: url("Nikolas.jpeg");
+}
+
+#Jack:hover,
+#Stephen:hover,
+#Nikolas:hover {
+  background-size: 200%;
+  animation: 4000ms infinite alternate btnHover;
+}
+
+@keyframes btnHover {
+  from {
+    background-position: 50% 90%;
+  }
+  to {
+    background-position: 50% 25%;
+  }
 }
 
 /* Character's card: */
 
 article {
   display: none;
+  flex-direction: row;
   width: 70%;
   border-radius: 5px;
   padding-top: 5px;
   transform: rotate3d(3, 1, 1, 360deg);
-  background-color: aquamarine;
+  background-color: #008080;
   position: relative;
 }
 
@@ -89,7 +139,7 @@ article::after {
   content: "";
   width: 100%;
   height: 100%;
-  background-color: aquamarine;
+  background-color: #008080;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -118,6 +168,7 @@ article::after {
   margin-bottom: 15px;
   margin-left: 10px;
   position: relative;
+  border: #00ff00 solid 3px;
 }
 
 .imgWrapper span {
@@ -129,7 +180,7 @@ article::after {
   left: 0;
   right: 0;
   background-repeat: no-repeat;
-  background-image: repeating-conic-gradient(#000 0deg, #000 360deg);
+  background-image: repeating-conic-gradient(#00ff00 0deg, #00ff00 360deg);
 }
 
 .imgWrapper img {
@@ -139,15 +190,15 @@ article::after {
 }
 
 .statsWrapper {
-  outline: dotted green 2px;
-  width: 70%;
+  width: fit-content;
+  font-family: "Rowdies", cursive;
+  font-size: 20px;
 }
 
 /* Text wrapper: */
 
 .txtWrapper {
   margin: 0px 0px 5px 12px;
-  outline: dashed 2px indigo;
   z-index: 10;
   width: 70%;
 }
@@ -169,25 +220,15 @@ h1 {
 }
 
 .desc span {
-  border-left: #000 3px solid;
+  border-left: #00ff00 3px solid;
   display: block;
   position: absolute;
   right: 0px;
   width: 100%;
   height: 100%;
-  background-color: aquamarine;
+  background-color: #008080;
   animation: 2000ms 1 forwards revealSpan;
 }
-
-/* KEEP IT AS A REF: */
-/* .desc p:nth-child(1) {
-  background-color: blue;
-  font-size: 22px;
-}
-
-.desc p:nth-child(2) {
-  background-color: red;
-} */
 
 @keyframes paragraphAppear {
   from {
@@ -210,5 +251,31 @@ h1 {
   100% {
     width: 0%;
     opacity: 0;
+  }
+}
+
+/* Mobile view: */
+
+@media screen and (max-width: 900px) {
+  article {
+    flex-direction: column;
+    width: 90%;
+    padding: 5px;
+  }
+
+  .txtWrapper {
+    width: 100%;
+    margin: 0;
+  }
+
+  .imgAndStats {
+    margin: 0;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .statsWrapper {
+    width: 45%;
   }
 }
