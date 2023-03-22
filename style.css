@@ -5,13 +5,19 @@
   margin: 0;
 }
 
+html {
+  --bg-color: #333333;
+  --green: #00ff00;
+  --blue: #008080;
+}
+
 body {
   height: 100%;
   width: 100%;
 }
 
 main {
-  background-color: #333333;
+  background-color: var(--bg-color);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,22 +28,23 @@ main {
 /* Character btns: */
 
 .charactersBtnsWrapper {
-  border: #00ff00 solid 2px;
+  border: var(--green) solid 2px;
   border-radius: 5px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
   position: absolute;
-  background-color: #333333;
+  background-color: var(--blue);
   width: 70%;
   height: fit-content;
   top: 10px;
   left: 50%;
   transform: translate(-50%, 0px);
+  z-index: 2;
 }
 
 .charactersBtnsWrapper button {
-  border: #00ff00 2px solid;
+  border: var(--green) 2px solid;
   border-radius: 50%;
   font-size: 18px;
   font-family: "Rowdies", cursive;
@@ -118,8 +125,9 @@ article {
   border-radius: 5px;
   padding-top: 5px;
   transform: rotate3d(3, 1, 1, 360deg);
-  background-color: #008080;
+  background-color: var(--blue);
   position: relative;
+  z-index: 2;
 }
 
 article > span {
@@ -139,7 +147,7 @@ article::after {
   content: "";
   width: 100%;
   height: 100%;
-  background-color: #008080;
+  background-color: var(--blue);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -168,7 +176,7 @@ article::after {
   margin-bottom: 15px;
   margin-left: 10px;
   position: relative;
-  border: #00ff00 solid 3px;
+  border: var(--green) solid 3px;
 }
 
 .imgWrapper span {
@@ -180,7 +188,10 @@ article::after {
   left: 0;
   right: 0;
   background-repeat: no-repeat;
-  background-image: repeating-conic-gradient(#00ff00 0deg, #00ff00 360deg);
+  background-image: repeating-conic-gradient(
+    var(--green) 0deg,
+    var(--green) 360deg
+  );
 }
 
 .imgWrapper img {
@@ -220,13 +231,13 @@ h1 {
 }
 
 .desc span {
-  border-left: #00ff00 3px solid;
+  border-left: var(--green) 3px solid;
   display: block;
   position: absolute;
   right: 0px;
   width: 100%;
   height: 100%;
-  background-color: #008080;
+  background-color: var(--blue);
   animation: 2000ms 1 forwards revealSpan;
 }
 

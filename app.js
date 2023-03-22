@@ -54,24 +54,23 @@ const data = [
 
 // The card wrapper:
 
-const card = document.getElementsByTagName("article");
-const cardDecorationOutline = card[0].children[0];
+const card = document.getElementsByTagName("article")[0];
+const cardDecorationOutline = card.children[0];
 
 // Image block variables:
 
 // Character img + decorative <span>:
-const image = document.getElementsByTagName("img");
-const clocky = document.getElementsByClassName("clocky");
+const image = document.getElementsByTagName("img")[0];
+const clocky = document.getElementsByClassName("clocky")[0];
 // Character stats:
-const strengthStat = document.getElementsByClassName("strength");
-const intellectStat = document.getElementsByClassName("intellect");
-const staminaStat = document.getElementsByClassName("stamina");
-const charismaStat = document.getElementsByClassName("charisma");
+const strengthStat = document.getElementsByClassName("strength")[0];
+const intellectStat = document.getElementsByClassName("intellect")[0];
+const staminaStat = document.getElementsByClassName("stamina")[0];
+const charismaStat = document.getElementsByClassName("charisma")[0];
 
 // Text description block variables:
-
-const charName = document.getElementsByTagName("h1");
-const charDesc = document.getElementsByClassName("desc");
+const charName = document.getElementsByTagName("h1")[0];
+const charDesc = document.getElementsByClassName("desc")[0];
 
 // Filtering info:
 
@@ -79,21 +78,21 @@ function filterOb(array) {
   return function (name) {
     for (let i = 0; i < array.length; i++) {
       if (!name) {
-        card[0].style = "display: none;";
+        card.style = "display: none;";
       }
       if (array[i].name == name) {
-        card[0].style = "display: flex;";
+        card.style = "display: flex;";
         // Img block:
-        image[0].src = array[i].img;
-        image[0].alt = array[i].alt;
-        strengthStat[0].textContent = "Strength: " + array[i].strength;
-        intellectStat[0].textContent = "Intellect: " + array[i].intellect;
-        staminaStat[0].textContent = "Stamina: " + array[i].stamina;
-        charismaStat[0].textContent = "Charisma: " + array[i].charisma;
+        image.src = array[i].img;
+        image.alt = array[i].alt;
+        strengthStat.textContent = "Strength: " + array[i].strength;
+        intellectStat.textContent = "Intellect: " + array[i].intellect;
+        staminaStat.textContent = "Stamina: " + array[i].stamina;
+        charismaStat.textContent = "Charisma: " + array[i].charisma;
 
         // Text block:
 
-        charName[0].textContent = array[i].name;
+        charName.textContent = array[i].name;
       }
     }
   };
@@ -124,6 +123,7 @@ function selectBtn(event) {
       }
     }
   }
+  event.stopPropagation(); // ADDED THIS LINE at school
 }
 
 // ANIMATIONS:
@@ -134,7 +134,7 @@ function animateCharImg() {
   function updateClocky() {
     translucentVal = (translucentVal + 1) % 360;
     blackVal = (blackVal - 1) % 360;
-    clocky[0].style = `background-image: repeating-conic-gradient(rgba(0, 0, 0, 0) 0deg, rgba(0, 0, 0, 0) ${translucentVal}deg, #00ff00 1deg, #00ff00 ${blackVal}deg);`;
+    clocky.style = `background-image: repeating-conic-gradient(rgba(0, 0, 0, 0) 0deg, rgba(0, 0, 0, 0) ${translucentVal}deg, #00ff00 1deg, #00ff00 ${blackVal}deg);`;
   }
 
   const intervalIdClocky = setInterval(updateClocky, 2);
@@ -172,17 +172,17 @@ function animateCharDescription(name, array) {
       function typeWriter() {
         for (let i = 0; i < txt.length; i++) {
           let paragraph = document.createElement("p");
-          charDesc[0].appendChild(paragraph);
-          for (let k = 0; k < charDesc[0].children.length; k++) {
-            charDesc[0].children[k].innerHTML = `<span></span> ${txt[k]}`;
+          charDesc.appendChild(paragraph);
+          for (let k = 0; k < charDesc.children.length; k++) {
+            charDesc.children[k].innerHTML = `<span></span> ${txt[k]}`;
           }
         }
       }
       // is txt wrapper empty or not:
       function isEmpty() {
-        if (charDesc[0].children) {
-          while (charDesc[0].lastChild) {
-            charDesc[0].lastChild.remove();
+        if (charDesc.children) {
+          while (charDesc.lastChild) {
+            charDesc.lastChild.remove();
           }
           typeWriter();
         } else {
@@ -196,11 +196,27 @@ function animateCharDescription(name, array) {
 
 function allAnimations() {
   // Init val (animation step 1):
-  clocky[0].style =
+  clocky.style =
     "background-image: repeating-conic-gradient(#000 0deg, #000 360deg);";
   cardDecorationOutline.style = "background-color: none";
   // Step 2:
   animateCharImg();
   animateCardDeco();
   animateCharDescription(btnId, data);
+}
+
+// Hide the card:
+
+const gW = document.getElementsByTagName("main")[0];
+gW.addEventListener("click", hideCard);
+
+function hideCard(event) {
+  if (event.type == "click") {
+    if (card.style.display !== "none") {
+      card.style.display = "none";
+    } else {
+      card.style.display = "flex";
+    }
+    event.stopPropagation();
+  }
 }
